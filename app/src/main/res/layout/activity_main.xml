@@ -7,13 +7,95 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/btnWriteSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="Add 120 Steps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38" />
 
+    <Button
+        android:id="@+id/btnReadSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Read Steps"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnWriteSteps" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EEEEEE"
+        android:stretchColumns="1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:background="#CCCCCC"
+            android:padding="8dp">
+
+            <TextView
+                android:padding="8dp"
+                android:text="Period"
+                android:textStyle="bold" />
+
+            <TextView
+                android:gravity="end"
+                android:padding="8dp"
+                android:text="Steps Count"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow android:padding="8dp">
+
+            <TextView
+                android:padding="8dp"
+                android:text="Last 24 Hours" />
+
+            <TextView
+                android:id="@+id/tvSteps24h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingEnd="20dp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="--" />
+        </TableRow>
+
+        <TableRow android:padding="8dp">
+
+            <TextView
+                android:padding="8dp"
+                android:text="Last 7 Days" />
+
+            <TextView
+                android:id="@+id/tvStepsLastWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingEnd="20dp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="--" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btnRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Refresh Table"
+        app:layout_constraintBottom_toTopOf="@+id/btnWriteSteps"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
