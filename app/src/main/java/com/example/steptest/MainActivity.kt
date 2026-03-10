@@ -134,8 +134,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     //write steps data manually
-
-
     suspend fun insertSteps(healthConnectClient: HealthConnectClient) {
         val currentOffset = java.time.ZonedDateTime.now().offset
         val endTime = Instant.now().minus(Duration.ofHours(4))
@@ -232,27 +230,5 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    suspend fun readStepsManualSum(healthConnectClient: HealthConnectClient) {
-        val now = Instant.now()
-        val sevenDaysAgo = now.minus(7, ChronoUnit.DAYS)
 
-        try {
-            val response = healthConnectClient.readRecords(
-                ReadRecordsRequest(
-                    StepsRecord::class,
-                    timeRangeFilter = TimeRangeFilter.between(sevenDaysAgo, now)
-                )
-            )
-
-            // This sums every single entry, regardless of which app sent it
-            val manualTotal = response.records.sumOf { it.count }
-
-            runOnUiThread {
-                findViewById<TextView>(R.id.tvStepsLastWeek).text = manualTotal.toString()
-                android.widget.Toast.makeText(this, "Manual Sync Complete!", android.widget.Toast.LENGTH_SHORT).show()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
 }
